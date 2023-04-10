@@ -1,0 +1,44 @@
+int sensor = D5; // Digital pin D7
+int state = 0;
+int relay = D1;
+int relay2 = D2;
+int relay3 = D3;
+int relay4 = D4;
+int i;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(sensor, INPUT);   // declare sensor as input
+  pinMode(relay,OUTPUT);
+  pinMode(relay2,OUTPUT);
+  pinMode(relay3,OUTPUT);
+  pinMode(relay4,OUTPUT);
+}
+void loop() {
+  state = digitalRead(sensor);
+  if(state == HIGH) {
+   Serial.println("Motion detected!");
+   digitalWrite(relay,LOW);
+   delay(0.5);
+   digitalWrite(relay2,LOW);
+   delay(0.5);
+   digitalWrite(relay3,LOW);
+   delay(0.5);
+   digitalWrite(relay4,LOW);
+   delay(20000);
+   delay(20000);
+   delay(20000);   
+   
+  }
+  else {
+   Serial.println("Motion absent!");
+   
+   digitalWrite(relay,HIGH);
+   delay(0.5);
+   digitalWrite(relay2,HIGH);
+   delay(0.5); 
+   digitalWrite(relay3,HIGH);
+   delay(0.5);
+   digitalWrite(relay4,HIGH);
+  }
+}
